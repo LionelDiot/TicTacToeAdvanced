@@ -1,3 +1,4 @@
 # The Hacking Morpion + IA
 
-Ceci est une base de code pour le projet du Morpion avec une "IA", dans le cadre de la formation THP-Next, pour la semaine sur les design-patterns et le clean code.
+Ceci est ma version de l'exercice du Hacking Morpion de THP aboutissement de plusieurs exercices à plusieurs étapes de la formation !
+Lancez simplement le html pour pouvoir jouer !
