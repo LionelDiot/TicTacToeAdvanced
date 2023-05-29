@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>The Hacking Morpion</title>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://fonts.googleapis.com/css?family=Lobster"
+        />
+        <link rel="stylesheet" type="text/css" href="./style.css" />
+    </head>
+    <body>
+        <h1 class="title">The Hacking Morpion</h1>
+        <section class="game-grid">
+            <div class="cell" id="A1"></div>
+            <div class="cell" id="A2"></div>
+            <div class="cell" id="A3"></div>
+
+            <div class="cell" id="B1"></div>
+            <div class="cell" id="B2"></div>
+            <div class="cell" id="B3"></div>
+
+            <div class="cell" id="C1"></div>
+            <div class="cell" id="C2"></div>
+            <div class="cell" id="C3"></div>
+        </section>
+        <section class="actions">
+            <div class="button-group">
+                <a class="action-button undo-button">Undo</a>
+                <a class="action-button redo-button">Redo</a>
+            </div>
+            <div>
+                <a class="action-button replay-button">New Game</a>
+            </div>
+        </section>
+        <div class="end-message" id="end-message"></div>
+        <script src="./morpion.js"></script>
+        <script>
+            let morpion = new Morpion();
+
+            // Event handler for the Replay button
+            document
+                .querySelector(".replay-button")
+                .addEventListener("click", () => {
+                    // Clear the move history and localStorage
+                    morpion.moveHistory = [];
+                    localStorage.removeItem("moveHistory");
+
+                    // Reset the game state
+                    morpion = new Morpion();
+                });
+
+            // Assuming you have references to the undo and redo buttons
+            const undoButton = document.querySelector(".undo-button");
+            const redoButton = document.querySelector(".redo-button");
+
+            // Event handler for the Undo button
+            undoButton.addEventListener("click", () => {
+                morpion.undo();
+            });
+
+            // Event handler for the Redo button
+
+            redoButton.addEventListener("click", () => {
+              
+                if (morpion.oldMoveHistory.length == 0) {
+                  alert("Impossible l'historique de coup est vide !");
+                } else {
+                    morpion.redo();
+                }
+            });
+        </script>
+    </body>
+</html>
